@@ -1,6 +1,7 @@
-if [ ! -z "${TFTPROOT}" ] && [ -e ${TFTPROOT} ];then
-   in.tftpd -LvB ${TFTPBLOCK} ${TFTPROOT}
+#!/bin/sh
+if [ ! -z "${TFTP_OPTIONS}" ];then
+   in.tftpd ${TFTP_OPTIONS} ${TFTP_EXTRAS} ${*} /tftproot
 else
-   echo "no TFTPROOT set, or path not found ${TFTPROOT}"
+   echo "need TFTP_OPTIONS"
    exit 1
 fi
